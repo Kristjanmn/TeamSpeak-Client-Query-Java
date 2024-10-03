@@ -12,7 +12,7 @@ public enum NotifyEvent {
     NOTIFY_CLIENT_POKE("notifyclientpoke"),
     NOTIFY_CLIENT_CHAT_CLOSED("notifyclientchatclosed"),
     NOTIFY_CLIENT_CHAT_COMPOSING("notifyclientchatcomposing"),
-    NOTIFY_CLIENT_UPDATE("notifyclientupdate"),
+    NOTIFY_CLIENT_UPDATED("notifyclientupdated"),
     NOTIFY_CLIENT_IDS("notifyclientids"),
     NOTIFY_CLIENT_DBID_FROM_UID("notifyclientdbidfromuid"),
     NOTIFY_CLIENT_NAME_FROM_UID("notifyclientnamefromuid"),
@@ -34,8 +34,21 @@ public enum NotifyEvent {
     NOTIFY_CLIENT_CHANNEL_GROUP_CHANGED("notifyclientchannelgroupchanged"),
     NOTIFY_CHANNEL_SUBSCRIBED("notifychannelsubscribed"),
     NOTIFY_CLIENT_NEEDED_PERMISSIONS("notifyclientneededpermissions"),
-    NOTIFY_SERVER_GROUP_LIST("notifyservergrouplist");
+    NOTIFY_SERVER_GROUP_LIST("notifyservergrouplist"),
+    NOTIFY_SERVER_GROUP_CLIENT_ADDED("notifyservergroupclientadded"),
+    NOTIFY_SERVER_GROUP_CLIENT_DELETED("notifyservergroupclientdeleted"),
+    NOTIFY_START_DOWNLOAD("notifystartdownload");
 
+    final String value;
     NotifyEvent(String value) {
+        this.value = value;
+    }
+
+    public static NotifyEvent from(String value) {
+        for (NotifyEvent event : NotifyEvent.values()) {
+            if (event.value.equals(value))
+                return event;
+        }
+        return null;
     }
 }
