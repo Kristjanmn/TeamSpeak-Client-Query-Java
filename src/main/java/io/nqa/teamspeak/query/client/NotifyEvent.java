@@ -33,6 +33,7 @@ public enum NotifyEvent {
     NOTIFY_CHANNEL_GROUP_LIST("notifychannelgrouplist"),
     NOTIFY_CLIENT_CHANNEL_GROUP_CHANGED("notifyclientchannelgroupchanged"),
     NOTIFY_CHANNEL_SUBSCRIBED("notifychannelsubscribed"),
+    NOTIFY_CHANNEL_UNSUBSCRIBED("notifychannelunsubscribed"),
     NOTIFY_CLIENT_NEEDED_PERMISSIONS("notifyclientneededpermissions"),
     NOTIFY_SERVER_GROUP_LIST("notifyservergrouplist"),
     NOTIFY_SERVER_GROUP_CLIENT_ADDED("notifyservergroupclientadded"),
