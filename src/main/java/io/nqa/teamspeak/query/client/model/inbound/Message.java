@@ -1,20 +1,17 @@
-package io.nqa.teamspeak.query.client.model;
+package io.nqa.teamspeak.query.client.model.inbound;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Builder
-@Getter
+@NoArgsConstructor
 @ToString
-public class Message {
-    private int handler;
-    private int messageId;
-    private String clientUniqueID;
-    private String subject;
-    private String message;
-    private long timestamp;
-    private boolean read;
+public class Message extends TeamSpeakNotifyModel {
+    public int msgid;
+    public String cluid;
+    public String subject;
+    public String message;
+    public long timestamp;
+    public boolean read;
 
     /* notifymessage
      * schandlerid=1
