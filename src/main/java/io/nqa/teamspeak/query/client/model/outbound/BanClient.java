@@ -5,9 +5,9 @@ import lombok.ToString;
 
 @Builder
 @ToString
-public class BanRule {
-    private String ip;
-    private String name;
+public class BanClient {
+    private int clid;
+    private int cldbid;
     private String uid;
     private long time;
     private String banreason;
