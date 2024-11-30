@@ -2,6 +2,7 @@ package io.nqa.teamspeak.query.client;
 
 import io.nqa.teamspeak.query.client.event.*;
 import io.nqa.teamspeak.query.client.exception.TeamSpeakClientQueryException;
+import io.nqa.teamspeak.query.client.exception.TeamSpeakError;
 import io.nqa.teamspeak.query.client.model.*;
 import io.nqa.teamspeak.query.client.model.inbound.*;
 import io.nqa.teamspeak.query.client.model.outbound.BanRule;
@@ -17,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.*;
 
@@ -49,15 +51,16 @@ public class TeamSpeakClientQuery implements Runnable {
     }
 
     public TeamSpeakClientQuery(String address, int port, String apiKey, ApplicationEventMulticaster multicaster) throws IOException {
-        this.eventMulticaster = multicaster;
-//        this.address = address;
-//        this.port = port;
-//        this.apiKey = apiKey;
-        this.client = new Socket(address, port);
-        this.input = new PrintWriter(client.getOutputStream(), true);
-        this.output = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        auth(apiKey);
-        clientNotifyRegister();
+        try {
+            this.eventMulticaster = multicaster;
+            this.client = new Socket(address, port);
+            this.input = new PrintWriter(client.getOutputStream(), true);
+            this.output = new BufferedReader(new InputStreamReader(client.getInputStream()));
+            auth(apiKey);
+            clientNotifyRegister();
+        } catch (ConnectException e) {
+            throw new TeamSpeakClientQueryException(TeamSpeakError.CONNECTION_REFUSED);
+        }
     }
 
     @Override
@@ -68,7 +71,7 @@ public class TeamSpeakClientQuery implements Runnable {
 //                System.out.println(message);
                 if (message == null) {
                     // given when closing client
-                    throw new TeamSpeakClientQueryException();
+                    throw new TeamSpeakClientQueryException(TeamSpeakError.CONNECTION_LOST);
                 }
                 if (!message.isBlank()) processMessage();
             }
@@ -352,7 +355,7 @@ public class TeamSpeakClientQuery implements Runnable {
         int equalsIndex = message.indexOf("=");
         if (spaceIndex == -1) spaceIndex = message.length();
         if (equalsIndex == -1 || equalsIndex > spaceIndex)
-            throw new TeamSpeakClientQueryException();
+            throw new TeamSpeakClientQueryException(TeamSpeakError.VARIABLE_WITHOUT_EQUALS);
         if (message.substring(equalsIndex + 1, spaceIndex).contains("|") &&
                 message.substring(equalsIndex + 1, spaceIndex).contains("=")) {
             multipleVariables = true;
@@ -397,7 +400,7 @@ public class TeamSpeakClientQuery implements Runnable {
     // V2
 
     private TeamSpeakVariables getVariablesFromMessage() {
-        if (message == null) throw new TeamSpeakClientQueryException();
+        if (message == null) throw new TeamSpeakClientQueryException(TeamSpeakError.MESSAGE_NULL);
         List<String> repeating = findRepeatingVariables();
         TeamSpeakVariables variables = new TeamSpeakVariables();
         Map<String, String> map = new HashMap<>();
@@ -475,9 +478,7 @@ public class TeamSpeakClientQuery implements Runnable {
                     break;
                 }
             }
-//            System.out.println("Field Class Type... " + listField.getType());
-//            System.out.println("Class... " + clazz);
-            if (listField == null) throw new TeamSpeakClientQueryException();
+            if (listField == null) throw new TeamSpeakClientQueryException(TeamSpeakError.MULTIPLE_VARIABLES_NO_LIST);
             List<Object> list = new ArrayList<>();
 //            System.out.println("List Class... " + list.getClass().getTypeName());
 //            System.out.println("Clazz methods... " + Arrays.toString(clazz.getDeclaredMethods()));
@@ -536,6 +537,22 @@ public class TeamSpeakClientQuery implements Runnable {
             }
         }
         return duplicates;
+    }
+
+    /**
+     * Check if object contains field with given name.
+     *
+     * @param object object to check
+     * @param field field name to check
+     * @return true if field exists in object
+     */
+    private boolean objectContainsField(Object object, String field) {
+        try {
+            object.getClass().getField(field);
+        } catch (NoSuchFieldException e) {
+            return false;
+        }
+        return true;
     }
 
     /**
