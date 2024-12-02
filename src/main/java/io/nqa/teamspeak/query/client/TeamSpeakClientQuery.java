@@ -463,52 +463,62 @@ public class TeamSpeakClientQuery implements Runnable {
 //        System.out.println("Declared classes... " + Arrays.toString(object.getClass().getDeclaredClasses()));
         variables.getVariables().forEach((key, value) -> {
             try {
-                Field field = object.getClass().getField(key);
-                setField(field, object, value);
+                if (objectContainsField(object, key)) {
+                    Field field = object.getClass().getField(key);
+                    setField(field, object, value);
+                } else {
+                    // subclass field
+                    Map<String, String> map = new HashMap<>();
+                    map.put(key, value);
+                    List<Map<String, String>> list = variables.getRepeating();
+                    list.add(map);
+                    variables.setRepeating(list);
+                }
             } catch (NoSuchFieldException e) {
                 logger.error("Field {} not found in {}", key, object.getClass());
             }
         });
         if (!variables.getRepeating().isEmpty()) {
-            // get first subclass
-            Class<?> clazz = object.getClass().getDeclaredClasses()[0];
-            Field[] fields = object.getClass().getFields();
-            Field listField = null;
-            // find the List<?> field
-            for (Field field : fields) {
-                if (field.getType().equals(List.class)) {
-                    listField = field;
-                    break;
-                }
-            }
-            if (listField == null) throw new TeamSpeakClientQueryException(TeamSpeakError.MULTIPLE_VARIABLES_NO_LIST);
-            List<Object> list = new ArrayList<>();
-//            System.out.println("List Class... " + list.getClass().getTypeName());
-//            System.out.println("Clazz methods... " + Arrays.toString(clazz.getDeclaredMethods()));
-            variables.getRepeating().forEach(map -> {
-                try {
-                    Object item = clazz.getDeclaredConstructor().newInstance();
-                    map.forEach((key, value) -> {
-                        try {
-                            Field field = clazz.getField(key);
-                            setField(field, item, value);
-                        } catch (NoSuchFieldException e) {
-                            logger.error("Field {} not found in {}", key, clazz);
-                            e.printStackTrace();
-//                            throw new RuntimeException(e);
-                        }
-                    });
-//                    System.out.println("Item... " + item);
-                    list.add(item);
-                } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
-                         InvocationTargetException e) {
-                    throw new RuntimeException(e);
-                }
-            });
             try {
+                // get first subclass
+                Class<?> clazz = object.getClass().getDeclaredClasses()[0];
+                Field[] fields = object.getClass().getFields();
+                Field listField = null;
+                // find the List<?> field
+                for (Field field : fields) {
+                    if (field.getType().equals(List.class)) {
+                        listField = field;
+                        break;
+                    }
+                }
+                if (listField == null)
+                    throw new TeamSpeakClientQueryException(TeamSpeakError.MULTIPLE_VARIABLES_NO_LIST);
+                List<Object> list = new ArrayList<>();
+                variables.getRepeating().forEach(map -> {
+                    try {
+                        Object item = clazz.getDeclaredConstructor().newInstance();
+                        map.forEach((key, value) -> {
+                            try {
+                                Field field = clazz.getField(key);
+                                setField(field, item, value);
+                            } catch (NoSuchFieldException e) {
+                                logger.error("Field {} not found in {}", key, clazz);
+                                e.printStackTrace();
+                            }
+                        });
+                        list.add(item);
+                    } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                             InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
                 listField.set(object, list);
             } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                // Could be thrown when some parameters from message are not define in specified object
+                logger.error("No subclass on: {}", object);
+                logger.error("Repeating variables: {}", variables.getRepeating());
             }
         }
     }
