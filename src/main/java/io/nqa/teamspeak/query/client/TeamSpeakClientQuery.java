@@ -5,7 +5,10 @@ import io.nqa.teamspeak.query.client.exception.TeamSpeakClientQueryException;
 import io.nqa.teamspeak.query.client.exception.TeamSpeakError;
 import io.nqa.teamspeak.query.client.model.*;
 import io.nqa.teamspeak.query.client.model.inbound.*;
+import io.nqa.teamspeak.query.client.model.outbound.BanClient;
 import io.nqa.teamspeak.query.client.model.outbound.BanRule;
+import io.nqa.teamspeak.query.client.model.outbound.ChannelDelete;
+import io.nqa.teamspeak.query.client.model.outbound.VerifyChannelPassword;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -726,10 +729,54 @@ public class TeamSpeakClientQuery implements Runnable {
     /**
      * Poke a client.
      *
-     * @param message message contained in poke
-     * @param target client ID (clid)
+     * @param message Message to poke with
+     * @param target Target Client ID
      */
     public void clientPoke(String message, int target) {
         send("clientpoke msg=" + replaceSpaces(message) + " clid=" + target);
+    }
+
+    /**
+     * Poke a client.
+     *
+     * @param clientPoke Object containing poke details
+     */
+    public void clientPoke(io.nqa.teamspeak.query.client.model.outbound.ClientPoke clientPoke) {
+        sendCommand("clientpoke", clientPoke);
+    }
+
+    /**
+     * Check if we know the current password of a channel.
+     *
+     * @param channelId Channel to check on
+     * @param password Password to verify
+     */
+    public void verifyChannelPassword(int channelId, String password) {
+        send("verifychannelpassword cid=" + channelId + " password=" + password);
+    }
+
+    /**
+     * Check if we know the current password of a channel.
+     *
+     * @param verifyChannelPassword Object containing channel and password details
+     */
+    public void verifyChannelPassword(VerifyChannelPassword verifyChannelPassword) {
+        sendCommand("verifychannelpassword", verifyChannelPassword);
+    }
+
+    /**
+     * Check if we know the current server password.
+     *
+     * @param password Password to verify
+     */
+    public void verifyServerPassword(String password) {
+        send("verifyserverpassword password=" + password);
+    }
+
+    /**
+     * Get information on current client.
+     */
+    public void whoAmI() {
+        send("whoami");
     }
 }
