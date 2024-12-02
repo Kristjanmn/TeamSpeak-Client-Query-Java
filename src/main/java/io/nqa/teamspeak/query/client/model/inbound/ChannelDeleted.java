@@ -3,6 +3,10 @@ package io.nqa.teamspeak.query.client.model.inbound;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Contains info about deleted channel.<p>
+ * Provided with {@link io.nqa.teamspeak.query.client.event.OnChannelDeleted} event.
+ */
 @NoArgsConstructor
 @ToString
 public class ChannelDeleted extends TeamSpeakNotifyModel {
