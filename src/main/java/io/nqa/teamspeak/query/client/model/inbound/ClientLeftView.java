@@ -11,4 +11,8 @@ public class ClientLeftView extends TeamSpeakNotifyModel {
     public int reasonid;
     public String reasonmsg;
     public int clid;
+    public long bantime;
+    public int invokerid;
+    public String invokername;
+    public String invokeruid;
 }
