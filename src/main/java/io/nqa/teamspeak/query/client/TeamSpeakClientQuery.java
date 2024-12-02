@@ -700,6 +700,15 @@ public class TeamSpeakClientQuery implements Runnable {
     }
 
     /**
+     * Delete specified channel from TeamSpeak server.
+     *
+     * @param channelDelete Object containing information on which channel to delete
+     */
+    public void channelDelete(ChannelDelete channelDelete) {
+        sendCommand("channeldelete", channelDelete);
+    }
+
+    /**
      * Register for all possible events.
      */
     public void clientNotifyRegister() {
