@@ -615,6 +615,29 @@ public class TeamSpeakClientQuery implements Runnable {
     }
 
     /**
+     * Generate and send command from object.
+     *
+     * @param command Command to send
+     * @param object Object to get parameters from
+     */
+    public void sendCommand(String command, Object object) {
+        StringBuilder sb = new StringBuilder(command);
+        Field[] fields = object.getClass().getFields();
+        for (Field field : fields) {
+            try {
+                Object value = field.get(object);
+                // Skip field if value is null
+                if (value == null) continue;
+                if (field.getType().equals(String.class)) value = replaceSpaces((String) value);
+                sb.append(" ").append(field.getName()).append("=").append(value);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        this.send(sb.toString());
+    }
+
+    /**
      * Send command for TeamSpeak client to execute.
      *
      * @param str Command to execute
