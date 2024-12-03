@@ -5,10 +5,8 @@ import io.nqa.teamspeak.query.client.exception.TeamSpeakClientQueryException;
 import io.nqa.teamspeak.query.client.exception.TeamSpeakError;
 import io.nqa.teamspeak.query.client.model.*;
 import io.nqa.teamspeak.query.client.model.inbound.*;
-import io.nqa.teamspeak.query.client.model.outbound.BanClient;
-import io.nqa.teamspeak.query.client.model.outbound.BanRule;
-import io.nqa.teamspeak.query.client.model.outbound.ChannelDelete;
-import io.nqa.teamspeak.query.client.model.outbound.VerifyChannelPassword;
+import io.nqa.teamspeak.query.client.model.inbound.ClientPoke;
+import io.nqa.teamspeak.query.client.model.outbound.*;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -805,12 +803,18 @@ public class TeamSpeakClientQuery implements Runnable {
 
     /**
      * Disconnect from TeamSpeak server.
-     *
-     * @param message Optional message to server
      */
-    public void disconnect(@Nullable String message) {
-        if (message == null) send("disconnect");
-        else send("disconnect msg=" + replaceSpaces(message));
+    public void disconnect() {
+        send("disconnect");
+    }
+
+    /**
+     * Disconnect from TeamSpeak server with message.
+     *
+     * @param message Message to server
+     */
+    public void disconnect(String message) {
+        send("disconnect msg=" + replaceSpaces(message));
     }
 
     /**
