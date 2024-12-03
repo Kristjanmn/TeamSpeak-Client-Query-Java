@@ -788,6 +788,32 @@ public class TeamSpeakClientQuery implements Runnable {
     }
 
     /**
+     * Connect to TeamSpeak server.
+     *
+     * @param connect Object containing connection details
+     */
+    public void connect(Connect connect) {
+        sendCommand("connect", connect);
+    }
+
+    /**
+     * Get current server connection handler ID.
+     */
+    public void currentScHandlerId() {
+        send("currentschandlerid");
+    }
+
+    /**
+     * Disconnect from TeamSpeak server.
+     *
+     * @param message Optional message to server
+     */
+    public void disconnect(@Nullable String message) {
+        if (message == null) send("disconnect");
+        else send("disconnect msg=" + replaceSpaces(message));
+    }
+
+    /**
      * Check if we know the current password of a channel.
      *
      * @param channelId Channel to check on
