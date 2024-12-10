@@ -525,9 +525,9 @@ public class TeamSpeakClientQuery implements Runnable {
         try {
 //            System.out.println("Field... " + field.getName() + " ...type... " + field.getType() + " ...generic... " + field.getGenericType());
             if (field.getType().equals(String.class)) field.set(object, value);
-            if (field.getType().equals(int.class)) field.set(object, Integer.parseInt(value));
-            if (field.getType().equals(long.class)) field.set(object, Long.parseLong(value));
-            if (field.getType().equals(boolean.class)) field.set(object, intToBoolean(Integer.parseInt(value)));
+            if (field.getType().equals(Integer.class)) field.set(object, Integer.parseInt(value));
+            if (field.getType().equals(Long.class)) field.set(object, Long.parseLong(value));
+            if (field.getType().equals(Boolean.class)) field.set(object, intToBoolean(Integer.parseInt(value)));
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
