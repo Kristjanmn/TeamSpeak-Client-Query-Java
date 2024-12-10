@@ -8,14 +8,19 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class ChannelPermList extends TeamSpeakNotifyModel {
+    /** List of permissions */
     public List<Perm> perms;
 
+    /** Permission parameters from event */
     @ToString
     public static class Perm {
-        public int cid;
-        public int permid;
-        public int permvalue;
-        public int permnegated;
-        public int permskip;
+        /** Channel ID */
+        public Integer cid;
+        /** Permission ID */
+        public Integer permid;
+        /** Permission value */
+        public Integer permvalue;
+        public Integer permnegated;
+        public Integer permskip;
     }
 }

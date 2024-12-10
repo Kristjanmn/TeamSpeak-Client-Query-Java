@@ -3,17 +3,24 @@ package io.nqa.teamspeak.query.client.model.inbound;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Provided with {@link io.nqa.teamspeak.query.client.event.OnChannelEdited} event.
+ */
 @NoArgsConstructor
 @ToString
 public class ChannelEdited extends TeamSpeakNotifyModel {
-    public int cid;
+    /** Channel ID */
+    public Integer cid;
+    /** Channel name */
+    public String channel_name;
+    /** Channel description */
     public String channel_description;
-    public int reasonid;
-    public int invokerid;
+    /** Reason ID. See {@link io.nqa.teamspeak.query.client.Reason} */
+    public Integer reasonid;
+    public Integer invokerid;
     public String invokername;
     public String invokeruid;
-    // Too long for Long
     public String channel_icon_id;
-    public int channel_order;
-    public int channel_flag_password;
+    public Integer channel_order;
+    public Integer channel_flag_password;
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class FileList extends TeamSpeakNotifyModel {
-    public int cid;
+    public Integer cid;
     public String path;
     public String return_code;
     public List<File> files;
@@ -16,8 +16,8 @@ public class FileList extends TeamSpeakNotifyModel {
     @ToString
     public static class File {
         public String name;
-        public long size;
-        public long datetime;
-        public int type;
+        public Long size;
+        public Long datetime;
+        public Integer type;
     }
 }

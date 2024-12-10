@@ -12,10 +12,13 @@ public class ChannelGroupPermList extends TeamSpeakNotifyModel {
 
     @ToString
     public static class Perm {
-        public int cgid;
-        public int permid;
-        public int permvalue;
-        public int permnegated;
-        public int permskip;
+        /** Channel group ID */
+        public Integer cgid;
+        /** Permission ID */
+        public Integer permid;
+        /** Permission value */
+        public Integer permvalue;
+        public Integer permnegated;
+        public Integer permskip;
     }
 }

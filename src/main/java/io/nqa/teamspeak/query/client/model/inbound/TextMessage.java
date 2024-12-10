@@ -1,22 +1,20 @@
 package io.nqa.teamspeak.query.client.model.inbound;
 
-import io.nqa.teamspeak.query.client.model.inbound.TeamSpeakNotifyModel;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
 public class TextMessage extends TeamSpeakNotifyModel {
-//    public int schandlerid;
     /**
-     * 1 = Client
-     * 2 = Channel
-     * 3 = Server
+     * 1 - Client<p>
+     * 2 - Channel<p>
+     * 3 - Server<p>
      */
-    public int targetmode;
+    public Integer targetmode;
     public String msg;
-    public int target;     // target current client ID - ONLY when targetMode=1
-    public int invokerid;  // invoker current client ID
+    public Integer target;     // target current client ID - ONLY when targetMode=1
+    public Integer invokerid;  // invoker current client ID
     public String invokername;
     public String invokeruid;
 

@@ -11,11 +11,11 @@ import lombok.ToString;
 @ToString
 public class ChannelDeleted extends TeamSpeakNotifyModel {
     /** Invoker ID */
-    public int invokerid;
+    public Integer invokerid;
     /** Invoker name */
     public String invokername;
     /** Invoker Unique ID */
     public String invokeruid;
     /** Channel ID */
-    public int cid;
+    public Integer cid;
 }

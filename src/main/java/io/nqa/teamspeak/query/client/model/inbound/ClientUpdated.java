@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString
 public class ClientUpdated extends TeamSpeakNotifyModel {
     /** Client ID */
-    public int clid;
+    public Integer clid;
     /** Client version */
     public String client_version;
     /** Client platform */
@@ -16,17 +16,17 @@ public class ClientUpdated extends TeamSpeakNotifyModel {
     public String client_nickname;
     public String client_login_name;
     /** 1 = Client is away */
-    public int client_away;
+    public Integer client_away;
     /** Timestamp of when client was created */
-    public long client_created;
+    public Long client_created;
     /** Timestamp of when client was last connected */
-    public long client_lastconnected;
-    public int client_totalconnections;
-    public long client_month_bytes_uploaded;
-    public long client_month_bytes_downloaded;
-    public long client_total_bytes_uploaded;
-    public long client_total_bytes_downloaded;
-    public long client_input_hardware;
+    public Long client_lastconnected;
+    public Integer client_totalconnections;
+    public Long client_month_bytes_uploaded;
+    public Long client_month_bytes_downloaded;
+    public Long client_total_bytes_uploaded;
+    public Long client_total_bytes_downloaded;
+    public Long client_input_hardware;
 
     // notifyclientupdated
     // schandlerid=1

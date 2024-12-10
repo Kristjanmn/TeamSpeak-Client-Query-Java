@@ -6,10 +6,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class StartDownload extends TeamSpeakNotifyModel {
-    public int clientftfid;
-    public int serverftfid;
+    public Integer clientftfid;
+    public Integer serverftfid;
     public String ftkey;
-    public int port;
-    public int size;
-    public int proto;
+    public Integer port;
+    public Integer size;
+    public Integer proto;
 }

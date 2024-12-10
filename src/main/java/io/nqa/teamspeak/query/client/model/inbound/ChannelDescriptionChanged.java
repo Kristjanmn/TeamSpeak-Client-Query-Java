@@ -7,5 +7,5 @@ import lombok.ToString;
 @ToString
 public class ChannelDescriptionChanged extends TeamSpeakNotifyModel {
     /** Channel ID */
-    public int cid;
+    public Integer cid;
 }

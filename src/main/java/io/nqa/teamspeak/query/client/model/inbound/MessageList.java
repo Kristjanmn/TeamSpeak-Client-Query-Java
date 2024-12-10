@@ -12,10 +12,10 @@ public class MessageList extends TeamSpeakNotifyModel {
 
     @ToString
     public static class Message {
-        public int msgid;
+        public Integer msgid;
         public String cluid;
         public String subject;
-        public long timestamp;
-        public int flag_read;
+        public Long timestamp;
+        public Integer flag_read;
     }
 }

@@ -6,7 +6,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class TalkStatusChange extends TeamSpeakNotifyModel {
-    public int status;
-    public int isreceivedwhisper;
-    public int clid;
+    public Integer status;
+    public Integer isreceivedwhisper;
+    public Integer clid;
 }

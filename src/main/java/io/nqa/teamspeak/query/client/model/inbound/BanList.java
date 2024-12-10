@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 public class BanList extends TeamSpeakNotifyModel {
     /** Number of bans */
-    public int count;
+    public Integer count;
     /** List of bans */
     public List<Ban> bans;
 
@@ -23,7 +23,7 @@ public class BanList extends TeamSpeakNotifyModel {
     @ToString
     public static class Ban {
         /** ID of the ban */
-        public int banid;
+        public Integer banid;
         /** Banned IP address */
         public String ip;
         /** Name of banned user */
@@ -35,18 +35,18 @@ public class BanList extends TeamSpeakNotifyModel {
         /** Banned user's last used nickname */
         public String lastnickname;
         /** Timestamp of when ban was created */
-        public long created;
+        public Long created;
         /** Ban duration in seconds */
-        public long duration;
+        public Long duration;
         /** Name of the user who invoked the ban */
         public String invokername;
         /** Invoker's Database ID */
-        public int invokercldbid;
+        public Integer invokercldbid;
         /** Invoker's Unique ID */
         public String invokeruid;
         /** Reason for the ban */
         public String reason;
         /** Number of times banned user tried to connect */
-        public int enforcements;
+        public Integer enforcements;
     }
 }

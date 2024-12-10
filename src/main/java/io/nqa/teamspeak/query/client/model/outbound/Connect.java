@@ -9,7 +9,7 @@ public class Connect {
     public String address;
     public String password;
     public String nickname;
-    public int channel;
+    public Integer channel;
     public String channel_pw;
     public String token;
 }

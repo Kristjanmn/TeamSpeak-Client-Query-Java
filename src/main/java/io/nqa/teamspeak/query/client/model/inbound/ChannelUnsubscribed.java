@@ -12,6 +12,6 @@ public class ChannelUnsubscribed extends TeamSpeakNotifyModel {
 
     @ToString
     public static class Channel {
-        public int cid;
+        public Integer cid;
     }
 }

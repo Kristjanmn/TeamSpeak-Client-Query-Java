@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 public class ChannelDelete {
     /** ID of channel to delete */
-    public int cid;
+    public Integer cid;
     /** 1 = the channel will be deleted even if there are clients within */
-    public int force;
+    public Integer force;
 }

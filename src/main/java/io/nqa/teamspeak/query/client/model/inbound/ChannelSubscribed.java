@@ -18,8 +18,8 @@ public class ChannelSubscribed extends TeamSpeakNotifyModel {
     @ToString
     public static class Channel {
         /** Channel ID */
-        public int cid;
+        public Integer cid;
         /** Empty since in seconds */
-        public int es;
+        public Integer es;
     }
 }

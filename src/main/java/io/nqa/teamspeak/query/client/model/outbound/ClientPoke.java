@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString
 public class ClientPoke {
     /** Message to poke with */
-    public String msg;
+    public final String msg;
     /** Target Client ID */
-    public int clid;
+    public final Integer clid;
 }

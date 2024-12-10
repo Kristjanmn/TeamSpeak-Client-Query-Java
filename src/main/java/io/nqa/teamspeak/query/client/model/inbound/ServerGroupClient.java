@@ -9,11 +9,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ServerGroupClient extends TeamSpeakNotifyModel {
-    public int invokerid;
+    public Integer invokerid;
     public String invokername;
     public String invokeruid;
-    public int sgid;
-    public int clid;
+    public Integer sgid;
+    public Integer clid;
     public String name;
     public String cluid;
 }

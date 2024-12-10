@@ -7,5 +7,5 @@ import lombok.ToString;
 @ToString
 public class ConnectStatusChange extends TeamSpeakNotifyModel {
     public String status;
-    public int error;
+    public Integer error;
 }

@@ -6,5 +6,5 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ChannelPasswordChanged extends TeamSpeakNotifyModel {
-    public int cid;
+    public Integer cid;
 }

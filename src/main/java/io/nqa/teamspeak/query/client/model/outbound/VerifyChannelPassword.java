@@ -1,13 +1,16 @@
 package io.nqa.teamspeak.query.client.model.outbound;
 
-import lombok.Builder;
-import lombok.ToString;
-
-@Builder
-@ToString
+/**
+ * Object for verifying channel password.
+ */
 public class VerifyChannelPassword {
     /** Channel ID */
-    public int cid;
+    public final Integer cid;
     /** Channel password */
-    public String password;
+    public final String password;
+
+    public VerifyChannelPassword(int cid, String password) {
+        this.cid = cid;
+        this.password = password;
+    }
 }

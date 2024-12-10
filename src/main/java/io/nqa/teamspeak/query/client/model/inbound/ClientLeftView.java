@@ -6,13 +6,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ClientLeftView extends TeamSpeakNotifyModel {
-    public int cfid;
-    public int ctid;
-    public int reasonid;
+    /** From channel */
+    public Integer cfid;
+    /** To channel */
+    public Integer ctid;
+    /** Reason see {@link io.nqa.teamspeak.query.client.Reason} */
+    public Integer reasonid;
     public String reasonmsg;
-    public int clid;
-    public long bantime;
-    public int invokerid;
+    public Integer clid;
+    public Long bantime;
+    public Integer invokerid;
     public String invokername;
     public String invokeruid;
 }

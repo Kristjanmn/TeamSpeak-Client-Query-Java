@@ -12,15 +12,15 @@ public class ServerGroupList extends TeamSpeakNotifyModel {
 
     @ToString
     public static class ServerGroup {
-        public int sgid;
+        public Integer sgid;
         public String name;
-        public int type;
-        public int iconid;
-        public int savedb;
-        public int sortid;
-        public int namemode;
-        public int n_modifyp;
-        public int n_member_addp;
-        public int n_member_removep;
+        public Integer type;
+        public String iconid;
+        public Integer savedb;
+        public Integer sortid;
+        public Integer namemode;
+        public Integer n_modifyp;
+        public Integer n_member_addp;
+        public Integer n_member_removep;
     }
 }

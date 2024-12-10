@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString
 public class ClientChatClosed extends TeamSpeakNotifyModel {
     /** Client ID */
-    public int clid;
+    public Integer clid;
     /** Client Unique ID */
     public String cluid;
 }

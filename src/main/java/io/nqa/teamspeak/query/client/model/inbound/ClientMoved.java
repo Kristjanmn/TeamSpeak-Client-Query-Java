@@ -6,11 +6,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ClientMoved extends TeamSpeakNotifyModel {
-    public int clid;
-    public int reasonid;           // 0 = switched | 1 - moved | 4 - kicked from channel
-    public int cfid;
-    public int ctid;
-    public int invokerid;
+    /** Client ID */
+    public Integer clid;
+    public Integer reasonid;           // 0 = switched | 1 - moved | 4 - kicked from channel
+    public Integer cfid;
+    public Integer ctid;
+    public Integer invokerid;
     public String invokername;
     public String invokeruid;
     public String reasonmsg;

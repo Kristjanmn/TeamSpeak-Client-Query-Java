@@ -11,15 +11,15 @@ import lombok.ToString;
 @ToString
 public class Channel {
     /** cid - channel ID */
-    public int cid;
+    public Integer cid;
     /** pid - parent channel ID */
-    public int pid;
+    public Integer pid;
     /** channel_order - TODO: figure out what it is */
-    public int channel_order;
+    public Integer channel_order;
     /** channel_name - name of the channel */
     public String channel_name;
     /** channel_flag_are_subscribed - 1=subscribed */
-    public boolean channel_flag_are_subscribed;
+    public Boolean channel_flag_are_subscribed;
     /** total_clients - number of clients currently connected to the channel */
-    public int total_clients;
+    public Integer total_clients;
 }

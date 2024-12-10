@@ -7,7 +7,7 @@ import lombok.ToString;
 @ToString
 public class ClientNeededPermissions extends TeamSpeakNotifyModel {
     /** Permission ID */
-    public int permid;
+    public Integer permid;
     /** Permission value */
-    public int permvalue;
+    public Integer permvalue;
 }

@@ -13,10 +13,10 @@ public class ServerGroupPermList extends TeamSpeakNotifyModel {
     @ToString
     public static class Perm {
         /** Server group id */
-        public int sgid;
-        public int permid;
-        public int permvalue;
-        public int permnegated;
-        public int permskip;
+        public Integer sgid;
+        public Integer permid;
+        public Integer permvalue;
+        public Integer permnegated;
+        public Integer permskip;
     }
 }

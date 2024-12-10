@@ -9,13 +9,13 @@ import java.util.List;
 @ToString
 public class ServerGroupClientList extends TeamSpeakNotifyModel {
     /** Server group ID*/
-    public int sgid;
+    public Integer sgid;
     public List<Client> clients;
 
     @ToString
     public static class Client {
         /** Client database ID */
-        public int cldbid;
+        public Integer cldbid;
         public String client_nickname;
         public String client_unique_identifier;
     }

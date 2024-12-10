@@ -6,6 +6,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class FileListFinished extends TeamSpeakNotifyModel {
-    public int cid;
+    public Integer cid;
     public String path;
 }

@@ -6,12 +6,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Message extends TeamSpeakNotifyModel {
-    public int msgid;
+    public Integer msgid;
     public String cluid;
     public String subject;
     public String message;
-    public long timestamp;
-    public boolean read;
+    public Long timestamp;
+//    public boolean read;
 
     /* notifymessage
      * schandlerid=1
