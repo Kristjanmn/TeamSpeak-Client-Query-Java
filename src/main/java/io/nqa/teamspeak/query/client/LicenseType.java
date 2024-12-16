@@ -32,6 +32,12 @@ public enum LicenseType {
         this.value = value;
     }
 
+    /**
+     * Get LicenseType from Integer.
+     *
+     * @param value LicenseType value
+     * @return this object
+     */
     public static LicenseType from(int value) {
         for (LicenseType type : LicenseType.values()) {
             if (type.value == value) return type;

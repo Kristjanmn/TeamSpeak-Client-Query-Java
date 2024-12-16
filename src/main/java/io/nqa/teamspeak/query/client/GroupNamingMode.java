@@ -16,6 +16,12 @@ public enum GroupNamingMode {
         this.value = value;
     }
 
+    /**
+     * Get GroupNamingMode from Integer.
+     *
+     * @param value GroupNamingMode value
+     * @return this object
+     */
     public static GroupNamingMode from(int value) {
         for (GroupNamingMode mode : GroupNamingMode.values()) {
             if (mode.value == value) return mode;

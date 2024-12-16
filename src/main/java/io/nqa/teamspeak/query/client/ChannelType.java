@@ -16,6 +16,12 @@ public enum ChannelType {
         this.value = value;
     }
 
+    /**
+     * Get ChannelType from Integer.
+     *
+     * @param value ChannelType value
+     * @return this object
+     */
     public static ChannelType from(int value) {
         for (ChannelType type : ChannelType.values()) {
             if (type.value == value) return type;

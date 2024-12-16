@@ -16,6 +16,12 @@ public enum HostBannerMode {
         this.value = value;
     }
 
+    /**
+     * Get HostBannerMode from Integer.
+     *
+     * @param value HostBannerMode value
+     * @return this object
+     */
     public static HostBannerMode from(int value) {
         for (HostBannerMode mode : HostBannerMode.values()) {
             if (mode.value == value) return mode;

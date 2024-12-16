@@ -22,6 +22,12 @@ public enum Codec {
         this.value = value;
     }
 
+    /**
+     * Get Codec from Integer.
+     *
+     * @param value Codec value
+     * @return this object
+     */
     public static Codec from(int value) {
         for (Codec codec : Codec.values()) {
             if (codec.value == value) return codec;

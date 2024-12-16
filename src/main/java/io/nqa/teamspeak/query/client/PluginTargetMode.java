@@ -18,6 +18,12 @@ public enum PluginTargetMode {
         this.value = value;
     }
 
+    /**
+     * Get PluginTargetMode from Integer.
+     *
+     * @param value PluginTargetMode value
+     * @return this object
+     */
     public static PluginTargetMode from(int value) {
         for (PluginTargetMode mode : PluginTargetMode.values()) {
             if (mode.value == value) return mode;

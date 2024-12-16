@@ -16,6 +16,12 @@ public enum CodecEncryptionMode {
         this.value = value;
     }
 
+    /**
+     * Get CodecEncryptionMode from Integer.
+     *
+     * @param value CodecEncryptionMode value
+     * @return this object
+     */
     public static CodecEncryptionMode from(int value) {
         for (CodecEncryptionMode mode : CodecEncryptionMode.values()) {
             if (mode.value == value) return mode;

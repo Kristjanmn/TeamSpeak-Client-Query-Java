@@ -18,6 +18,12 @@ public enum HostMessageMode {
         this.value = value;
     }
 
+    /**
+     * Get HostMessageMode from Integer.
+     *
+     * @param value HostMessageMode value
+     * @return this object
+     */
     public static HostMessageMode from(int value) {
         for (HostMessageMode mode : HostMessageMode.values()) {
             if (mode.value == value) return mode;

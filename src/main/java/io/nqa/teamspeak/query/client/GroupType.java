@@ -16,6 +16,12 @@ public enum GroupType {
         this.value = value;
     }
 
+    /**
+     * Get GroupType from Integer.
+     *
+     * @param value GroupType value
+     * @return this object
+     */
     public static GroupType from(int value) {
         for (GroupType type : GroupType.values()) {
             if (type.value == value) return type;
