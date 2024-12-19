@@ -1,19 +1,31 @@
 package io.nqa.teamspeak.query.client.model.inbound;
 
-import lombok.NoArgsConstructor;
+import io.nqa.teamspeak.query.client.event.OnServerGroupClientAdded;
+import io.nqa.teamspeak.query.client.event.OnServerGroupClientDeleted;
 import lombok.ToString;
 
 /**
- * Used for OnServerGroupClientAdded and OnServerGroupClientDeleted
+ * Provided with {@link OnServerGroupClientAdded} and {@link OnServerGroupClientDeleted} events.
  */
-@NoArgsConstructor
 @ToString
 public class ServerGroupClient extends TeamSpeakNotifyModel {
+    /** Invoker ID */
     public Integer invokerid;
+    /** Invoker name */
     public String invokername;
+    /** Invoker unique ID */
     public String invokeruid;
+    /** Server group ID */
     public Integer sgid;
+    /** Client ID */
     public Integer clid;
+    /** Client name */
     public String name;
+    /** Client unique ID */
     public String cluid;
+
+    /**
+     * Create empty ServerGroupClient object.
+     */
+    public ServerGroupClient() {}
 }
