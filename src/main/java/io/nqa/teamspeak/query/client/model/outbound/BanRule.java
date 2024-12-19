@@ -23,6 +23,11 @@ public class BanRule {
     public String banreason;
 
     /**
+     * Create empty BanRule object.
+     */
+    public BanRule() {}
+
+    /**
      * Set IP Address to ban.
      *
      * @param ip IP Address
