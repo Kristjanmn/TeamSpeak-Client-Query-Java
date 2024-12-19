@@ -1,21 +1,24 @@
 package io.nqa.teamspeak.query.client.model.inbound;
 
-import lombok.NoArgsConstructor;
+import io.nqa.teamspeak.query.client.event.OnBanList;
 import lombok.ToString;
 
 import java.util.List;
 
 /**
- * List of bans.
- * Provided with {@link io.nqa.teamspeak.query.client.event.OnBanList} event.
+ * Provided with {@link OnBanList} event.
  */
-@NoArgsConstructor
 @ToString
 public class BanList extends TeamSpeakNotifyModel {
     /** Number of bans */
     public Integer count;
     /** List of bans */
     public List<Ban> bans;
+
+    /**
+     * Create empty BanList object.
+     */
+    public BanList() {}
 
     /**
      * Information on ban
@@ -48,5 +51,10 @@ public class BanList extends TeamSpeakNotifyModel {
         public String reason;
         /** Number of times banned user tried to connect */
         public Integer enforcements;
+
+        /**
+         * Create empty Ban object.
+         */
+        public Ban() {}
     }
 }
