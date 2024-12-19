@@ -1,13 +1,11 @@
 package io.nqa.teamspeak.query.client.model.inbound;
 
-import lombok.NoArgsConstructor;
+import io.nqa.teamspeak.query.client.event.OnChannelDeleted;
 import lombok.ToString;
 
 /**
- * Contains info about deleted channel.<p>
- * Provided with {@link io.nqa.teamspeak.query.client.event.OnChannelDeleted} event.
+ * Provided with {@link OnChannelDeleted} event.
  */
-@NoArgsConstructor
 @ToString
 public class ChannelDeleted extends TeamSpeakNotifyModel {
     /** Invoker ID */
@@ -18,4 +16,9 @@ public class ChannelDeleted extends TeamSpeakNotifyModel {
     public String invokeruid;
     /** Channel ID */
     public Integer cid;
+
+    /**
+     * Create empty ChannelDeleted object.
+     */
+    public ChannelDeleted() {}
 }
