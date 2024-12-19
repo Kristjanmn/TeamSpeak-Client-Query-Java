@@ -1,23 +1,26 @@
 package io.nqa.teamspeak.query.client.model.inbound;
 
-import lombok.NoArgsConstructor;
+import io.nqa.teamspeak.query.client.event.OnMessage;
 import lombok.ToString;
 
-@NoArgsConstructor
+/**
+ * Provide with {@link OnMessage} event.
+ */
 @ToString
 public class Message extends TeamSpeakNotifyModel {
+    /** Message ID */
     public Integer msgid;
+    /** Sender unique ID */
     public String cluid;
+    /** Message subject */
     public String subject;
+    /** Message content */
     public String message;
+    /** Message timestamp */
     public Long timestamp;
-//    public boolean read;
 
-    /* notifymessage
-     * schandlerid=1
-     * msgid=91
-     * cluid=tJGpfENDHdBWW1S+7PqtJN2BopY=
-     * subject=Re:\s<no\sSubject>
-     * message="Kristjanmn"\swrote:\n>\sthat's\sway\smore\sthan\s5\shours\sbro\nshit\si\sknow\sforgot\si\salso\shad\sto\smove\ssome\sthings\ssince\sim\smoving\sto\sa\snew\shouse
-     * timestamp=1416533061 */
+    /**
+     * Create empty Message object.
+     */
+    public Message() {}
 }
