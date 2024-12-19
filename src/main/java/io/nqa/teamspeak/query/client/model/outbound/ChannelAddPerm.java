@@ -15,8 +15,9 @@ public class ChannelAddPerm {
     public final List<Perm> perms;
 
     /**
+     * Create ChannelAddPerm object.
      *
-     * @param cid   Channel ID
+     * @param cid Channel ID
      * @param perms List of permissions
      */
     public ChannelAddPerm(int cid, List<Perm> perms) {
@@ -25,7 +26,7 @@ public class ChannelAddPerm {
     }
 
     /**
-     * Permission ID and Permission value.<p>
+     * Permission ID and Permission value.<br>
      * Must have ({@link #permid} OR {@link #permsid} (NOT both)) AND {@link #permvalue}
      */
     public static class Perm {
@@ -36,11 +37,23 @@ public class ChannelAddPerm {
         /** Permission value */
         public final Integer permvalue;
 
+        /**
+         * Create Perm object with Integer ID.
+         *
+         * @param permid Permission ID
+         * @param permvalue Permission value
+         */
         public Perm(int permid, int permvalue) {
             this.permid = permid;
             this.permvalue = permvalue;
         }
 
+        /**
+         * Create Perm object with String ID.
+         *
+         * @param permsid Permission ID as String
+         * @param permvalue Permission value
+         */
         public Perm(String permsid, int permvalue) {
             this.permsid = permsid;
             this.permvalue = permvalue;
