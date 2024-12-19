@@ -4,8 +4,8 @@ package io.nqa.teamspeak.query.client;
  * List of client types.
  */
 public enum ClientType {
-    /** TODO */
-    NONE(0);
+    CLIENT(0),
+    QUERY(1);
 
     final int value;
     ClientType(int value) {
