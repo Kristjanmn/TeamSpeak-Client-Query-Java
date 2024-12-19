@@ -6,7 +6,7 @@ import io.nqa.teamspeak.query.client.exception.TooManyIdentifiersException;
 import lombok.ToString;
 
 /**
- * Details on client to ban.<p>
+ * Details on client to ban.<br>
  * Requires one of the following: {@link #clid}, {@link #cldbid}
  * or {@link #uid}, the other two identifiers must be null.
  */
@@ -22,6 +22,11 @@ public class BanClient {
     public Long time;
     /** Reason for the ban */
     public String banreason;
+
+    /**
+     * Create empty BanClient object.
+     */
+    public BanClient() {}
 
     /**
      * Set Client ID to ban.
