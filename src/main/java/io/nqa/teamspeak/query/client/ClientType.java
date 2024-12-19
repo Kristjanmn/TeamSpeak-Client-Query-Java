@@ -4,7 +4,9 @@ package io.nqa.teamspeak.query.client;
  * List of client types.
  */
 public enum ClientType {
+    /** Regular TeamSpeak client */
     CLIENT(0),
+    /** Query client */
     QUERY(1);
 
     final int value;
