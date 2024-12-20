@@ -626,6 +626,29 @@ public class TeamSpeakClientQuery implements Runnable {
                 Object value = field.get(object);
                 // Skip field if value is null
                 if (value == null) continue;
+                if (field.getType().equals(Boolean.class)) {
+                    sb.append(" -").append(field.getName());
+                    continue;
+                }
+                if (field.getType().equals(List.class)) {
+                    ArrayList<?> list = (ArrayList<?>) value;
+                    for (int i = 0; i < list.size(); i++) {
+                        if (i > 0) sb.append("|");
+                        Object listObj = list.get(i);
+                        for (Field subField : listObj.getClass().getFields()) {
+                            Object subValue = subField.get(listObj);
+                            if (subValue == null) continue;
+                            if (!sb.toString().endsWith("|")) sb.append(" ");
+                            if (subField.getType().equals(Boolean.class)) {
+                                sb.append("-").append(subField.getName());
+                                continue;
+                            }
+                            if (subField.getType().equals(String.class)) subValue = replaceSpaces((String) subValue);
+                            sb.append(subField.getName()).append("=").append(subValue);
+                        }
+                    }
+                    continue;
+                }
                 if (field.getType().equals(String.class)) value = replaceSpaces((String) value);
                 sb.append(" ").append(field.getName()).append("=").append(value);
             } catch (IllegalAccessException e) {
