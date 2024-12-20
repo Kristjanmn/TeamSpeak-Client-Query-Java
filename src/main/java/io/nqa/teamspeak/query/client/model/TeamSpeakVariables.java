@@ -1,7 +1,6 @@
 package io.nqa.teamspeak.query.client.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.ArrayList;
