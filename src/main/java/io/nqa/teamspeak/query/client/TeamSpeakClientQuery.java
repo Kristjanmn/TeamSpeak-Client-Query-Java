@@ -737,37 +737,37 @@ public class TeamSpeakClientQuery implements Runnable {
     }
 
     /**
-     * Possible values for event:<p>
-     *   notifytalkstatuschange<p>
-     *   notifymessage<p>
-     *   notifymessagelist<p>
-     *   notifycomplainlist<p>
-     *   notifybanlist<p>
-     *   notifyclientmoved<p>
-     *   notifyclientleftview<p>
-     *   notifycliententerview<p>
-     *   notifyclientpoke<p>
-     *   notifyclientchatclosed<p>
-     *   notifyclientchatcomposing<p>
-     *   notifyclientupdated<p>
-     *   notifyclientids<p>
-     *   notifyclientdbidfromuid<p>
-     *   notifyclientnamefromuid<p>
-     *   notifyclientnamefromdbid<p>
-     *   notifyclientuidfromclid<p>
-     *   notifyconnectioninfo<p>
-     *   notifychannelcreated<p>
-     *   notifychanneledited<p>
-     *   notifychanneldeleted<p>
-     *   notifychannelmoved<p>
-     *   notifyserveredited<p>
-     *   notifyserverupdated<p>
-     *   channellist<p>
-     *   channellistfinished<p>
-     *   notifytextmessage<p>
-     *   notifycurrentserverconnectionchanged<p>
-     *   notifyconnectstatuschange<p>
-     * <p>
+     * Possible values for event:<br>
+     *   notifytalkstatuschange<br>
+     *   notifymessage<br>
+     *   notifymessagelist<br>
+     *   notifycomplainlist<br>
+     *   notifybanlist<br>
+     *   notifyclientmoved<br>
+     *   notifyclientleftview<br>
+     *   notifycliententerview<br>
+     *   notifyclientpoke<br>
+     *   notifyclientchatclosed<br>
+     *   notifyclientchatcomposing<br>
+     *   notifyclientupdated<br>
+     *   notifyclientids<br>
+     *   notifyclientdbidfromuid<br>
+     *   notifyclientnamefromuid<br>
+     *   notifyclientnamefromdbid<br>
+     *   notifyclientuidfromclid<br>
+     *   notifyconnectioninfo<br>
+     *   notifychannelcreated<br>
+     *   notifychanneledited<br>
+     *   notifychanneldeleted<br>
+     *   notifychannelmoved<br>
+     *   notifyserveredited<br>
+     *   notifyserverupdated<br>
+     *   channellist<br>
+     *   channellistfinished<br>
+     *   notifytextmessage<br>
+     *   notifycurrentserverconnectionchanged<br>
+     *   notifyconnectstatuschange
+     * <br>
      * Use {@link #clientNotifyRegister} to register for all possible events.
      *
      * @param event event to register for
@@ -776,6 +776,11 @@ public class TeamSpeakClientQuery implements Runnable {
         send("clientnotifyregister schandlerid=" + handlerId + " event=" + event);
     }
 
+    /**
+     * Unregister from all previously registered events and register new list of events to listen for.
+     *
+     * @param events List of events to listen for
+     */
     public void clientNotifyRegister(NotifyEvent ... events) {
         clientNotifyUnregister();
         for (NotifyEvent event : events)
