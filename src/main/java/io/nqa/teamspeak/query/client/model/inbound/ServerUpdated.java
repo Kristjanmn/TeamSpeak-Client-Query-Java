@@ -17,7 +17,7 @@ public class ServerUpdated extends TeamSpeakNotifyModel {
     public Integer virtualserver_clientsonline;
     /** Current amount of channels in server */
     public Integer virtualserver_channelsonline;
-    /** Server uptime TODO: confirm chosen variable type */
+    /** Server uptime */
     public Long virtualserver_uptime;
     /** Virtual server host message */
     public String virtualserver_hostmessage;
@@ -27,8 +27,6 @@ public class ServerUpdated extends TeamSpeakNotifyModel {
     public Integer virtualserver_flag_password;
     /** ID of channel group automatically given to client that created the channel */
     public Integer virtualserver_default_channel_admin_group;
-    // These two are set as String, because they have 20 digit value,
-    // which is too big for Long and Reflect considers BigInteger field as Long
     /** Maximum total download speed between all clients, in bytes/s */
     public String virtualserver_max_download_total_bandwidth;
     /** Maximum total upload speed between all clients, in bytes/s */
